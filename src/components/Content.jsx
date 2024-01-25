@@ -4,10 +4,27 @@ import UploadedFiles from "./UploadedFiles";
 import React, { useCallback, useState } from "react";
 import { useDropzone } from "react-dropzone";
 
+// to accept only excel files
+
+const acceptedFileTypes = [
+  "application/vnd.ms-excel",
+  "application/vnd.ms-excel.sheet.macroEnabled.12",
+  "application/msexcel",
+  "application/x-msexcel",
+  "application/x-ms-excel",
+  "application/x-excel",
+  "application/x-dos_ms_excel",
+  "application/xls",
+  "application/x-xls",
+  "application/x-msi",
+  "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+];
+
 export default function Content() {
   const [data, setData] = useState([]);
 
   const onDrop = useCallback((acceptedFiles) => {
+
     acceptedFiles.forEach((file) => {
       const reader = new FileReader();
       const textDecoder = new TextDecoder();
@@ -24,9 +41,13 @@ export default function Content() {
       reader.readAsArrayBuffer(file);
     });
   }, []);
+
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
+    maxFiles: 1,
+    accept: acceptedFileTypes.join(","),
   });
+  
   return (
     <div className="p-3 flex flex-col items-center justify-center">
       <Upload

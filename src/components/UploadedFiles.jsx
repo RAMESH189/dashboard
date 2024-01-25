@@ -22,7 +22,11 @@ export default function UploadedFiles({ data }) {
               ))}
           </div>
           <div className="p-2 w-full">
-            <FileContent data={data} />
+            {
+              data.length > 0 && data.map((data , index) => (
+                <FileContent key={index} rowData={data} />
+              ))
+            }
           </div>
         </div>
       </div>
