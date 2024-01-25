@@ -19,7 +19,7 @@ export default function Login() {
         <h2 className="hidden md:inline-block text-7xl text-white font-semibold">
           BASE
         </h2>
-        <div className="md:flex gap-5 text-white hidden mb-10">
+        <div className="md:flex gap-4 text-white hidden mb-10">
           <FaGithub size={40} className="cursor-pointer" />
           <AiFillTwitterCircle size={40} className="cursor-pointer" />
           <FaLinkedin size={40} className="cursor-pointer" />

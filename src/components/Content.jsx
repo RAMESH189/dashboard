@@ -49,7 +49,7 @@ export default function Content() {
   });
   
   return (
-    <div className="p-3 flex flex-col items-center justify-center">
+    <div className="p-3 flex flex-col items-center justify-center overflow-hidden">
       <Upload
         getRootProps={getRootProps}
         getInputProps={getInputProps}

@@ -1,69 +1,84 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IoMdClose } from "react-icons/io";
 
 export default function FileContent({ rowData }) {
   const [value, setValue] = useState("");
-  const [hidden, setHidden] = useState(false);
-  console.log(rowData);
+  const [values, setValues] = useState([]);
+  // console.log("rowdata", rowData);
+
+  //data for table
+  const row = rowData.split(",");
+
+  // console.log("row", row);
+  // data for the dropdown
+
+  const lastStringInQuotes = row.slice(3);
+  lastStringInQuotes[0] = "Technology";
+  lastStringInQuotes[lastStringInQuotes.length - 2] = "Finance";
+  lastStringInQuotes.pop();
+
+  // console.log("lastStringInQuotes", lastStringInQuotes);
+
+  const handleChnage = (e) => {
+    setValue(e.target.value);
+  };
+
+  const removeItem = (e, item) => {
+    e.preventDefault()
+    const updatedValues = values.filter((value) => item !== value);
+    setValues(updatedValues);
+  };
+
+  useEffect(() => {
+    if (value) {
+      setValues((values) => [...values, value]);
+    }
+  }, [value]);
+
   return (
     <div className="w-full bg-white p-4 rounded-md flex items-center justify-around mb-2">
-      <p className="flex-[0.2]">1</p>
-      <p className="flex-[0.2]">
-        <a href="#">link</a>
+      <p className="flex-[0.2]">{row[0]}</p>
+      <p className="flex-[0.2] text-blue-500 text-sm ">
+        <a href={row[1]}>{row[1]}</a>
       </p>
-      <p className="flex-[0.2]">prefix</p>
+      <p className="flex-[0.2]">{row[2]}</p>
       <div className="flex-[0.2] w-full">
         <select
           name="select"
           id="select"
-          onChange={(e) => setValue(e.target.value)}
+          onChange={handleChnage}
           className="w-[50%] p-1  border border-gray-200"
         >
           <option className="" value="">
             choose
           </option>
-          <option value="item 1">item 1</option>
-          <option value="item 2">item 2</option>
-          <option value="item 3">item 3</option>
-          <option value="item 4">item 4</option>
-          <option value="item 5">item 5</option>
-          <option value="item 6">item 6</option>
+          {lastStringInQuotes.map((value, index) => (
+            <option value={value} key={index}>
+              {value}
+            </option>
+          ))}
         </select>
       </div>
       <div className="flex-[0.2]">
         <div
-          className={`grid grid-cols-2 gap-2  ${
+          className={`grid grid-cols-2 gap-1   ${
             value.length > 0 ? "grid" : "hidden"
           }`}
         >
-          <div className="btn">
-            {value}
-            <IoMdClose
-              size={18}
-              className="border border-white  rounded-full"
-            />
-          </div>
-          <div className="btn">
-            {value}
-            <IoMdClose
-              size={18}
-              className="border border-white  rounded-full"
-            />
-          </div>
-          <div className="btn">
-            {value}
-            <IoMdClose
-              size={18}
-              className="border border-white  rounded-full"
-            />
-          </div>
-          <div className="btn">
-            {value}
-            <IoMdClose
-              size={18}
-              className="border border-white  rounded-full"
-            />
-          </div>
+          {values.length > 0 &&
+            values.map((value, index) => (
+              <div
+                onClick={(e) => removeItem(e, value)}
+                className="btn "
+                key={index}
+              >
+                {value.length > 6 ? value.substring(0, 6) + ".." : value}
+                <IoMdClose
+                  size={18}
+                  className="border border-white  rounded-full"
+                />
+              </div>
+            ))}
         </div>
       </div>
     </div>

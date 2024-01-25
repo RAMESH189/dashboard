@@ -8,11 +8,13 @@ export default function UploadedFiles({ data }) {
 
   return (
     <div
-      className={`w-full flex flex-col justify-center items-center item p-2 ${data.length===0 ? 'hidden' : ''}`}
+      className={`w-full flex flex-col justify-center overflow-x-auto items-center item p-2 ${
+        data.length === 0 ? "hidden" : ""
+      }`}
     >
       <h2 className="mb-3 font-semibold text-xl">Uploads</h2>
-      <div className="w-full md:w-[1065px] h-fit min-h-[497px] bg-gray-200 rounded-lg">
-        <div className="p-2">
+      <div className="w-[1065px] h-fit min-h-[497px] bg-gray-200 rounded-lg">
+        <div className="p-2 ">
           <div className="flex items-center justify-around mb-2">
             {tableHeaders &&
               tableHeaders.map((header, index) => (
@@ -22,11 +24,10 @@ export default function UploadedFiles({ data }) {
               ))}
           </div>
           <div className="p-2 w-full">
-            {
-              data.length > 0 && data.map((data , index) => (
-                <FileContent key={index} rowData={data} />
-              ))
-            }
+            {tableRows.length > 0 &&
+              tableRows.map((tableRow, index) => (
+                <FileContent key={index} rowData={tableRow} />
+              ))}
           </div>
         </div>
       </div>
