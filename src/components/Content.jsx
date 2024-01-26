@@ -20,11 +20,10 @@ const acceptedFileTypes = [
   "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
 ];
 
-export default function Content() {
+export default function Content({ navItem }) {
   const [data, setData] = useState([]);
 
   const onDrop = useCallback((acceptedFiles) => {
-
     acceptedFiles.forEach((file) => {
       const reader = new FileReader();
       const textDecoder = new TextDecoder();
@@ -47,17 +46,25 @@ export default function Content() {
     maxFiles: 1,
     accept: acceptedFileTypes.join(","),
   });
-  
+
   return (
-    <main className="p-3 flex flex-col items-center justify-center overflow-hidden">
-      <Upload
-        getRootProps={getRootProps}
-        getInputProps={getInputProps}
-        isDragActive={isDragActive}
-        setData={setData}
-        data={data}
-      />
-      <UploadedFiles data={data} />
-    </main>
+    <>
+      {navItem === "Upload" ? (
+        <main className="p-3 flex flex-col items-center justify-center overflow-hidden">
+          <Upload
+            getRootProps={getRootProps}
+            getInputProps={getInputProps}
+            isDragActive={isDragActive}
+            setData={setData}
+            data={data}
+          />
+          <UploadedFiles data={data} />
+        </main>
+      ) : (
+        <div className="flex items-center justify-center text-xl font-bold">
+          To Do
+        </div>
+      )}
+    </>
   );
 }

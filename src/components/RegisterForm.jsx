@@ -22,6 +22,11 @@ export default function RegisterForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (values.password !== values.confirmPass) {
+      setValues({
+        email: "",
+        password: "",
+        confirmPass: "",
+      });
       alert("passwords does not match");
       return;
     }

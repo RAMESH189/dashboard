@@ -18,8 +18,6 @@ export default function FileContent({ rowData }) {
   lastStringInQuotes.pop();
 
   // console.log("lastStringInQuotes", lastStringInQuotes);
-  console.log(lastStringInQuotes);
-
   const handleChnage = (e) => {
     setValue(e.target.value);
   };

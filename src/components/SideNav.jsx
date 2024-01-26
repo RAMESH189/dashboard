@@ -9,7 +9,7 @@ import { BsFillCalendar2DateFill } from "react-icons/bs";
 import { IoSettingsSharp } from "react-icons/io5";
 import { FaFileInvoice } from "react-icons/fa";
 
-export default function SideNav() {
+export default function SideNav({ setNavItem }) {
   const [isClosed, setIsClosed] = useState(false);
   const [item, setItem] = useState("Upload");
 
@@ -19,6 +19,7 @@ export default function SideNav() {
 
   const handleSelect = (item) => {
     setItem(item);
+    setNavItem(item);
   };
 
   useEffect(() => {

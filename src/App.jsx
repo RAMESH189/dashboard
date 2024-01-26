@@ -12,7 +12,7 @@ function App() {
         <Route exact path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
       </Routes>
-    </> 
+    </>
   );
 }
 export default App;
