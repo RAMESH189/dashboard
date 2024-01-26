@@ -6,7 +6,7 @@ import LoginForm from "../components/LoginForm";
 
 export default function Login() {
   return (
-    <div className="h-full w-full flex flex-col md:flex-row bg-[#F8FAFF]">
+    <main className="h-full w-full flex flex-col md:flex-row bg-[#F8FAFF]">
       <div className="flex-[0.5] bg-[#605BFF] p-4 h-screen min-h-[70px] flex flex-col md:justify-between md:items-center md:shape">
         <div className="relative md:left-2 md:top-2 flex w-full">
           <img
@@ -33,6 +33,6 @@ export default function Login() {
           <LoginForm />
         </div>
       </div>
-    </div>
+    </main>
   );
 }

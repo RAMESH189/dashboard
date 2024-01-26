@@ -4,7 +4,7 @@ import excel from "/excel.png";
 
 export default function Upload({ getRootProps, getInputProps, isDragActive }) {
   return (
-    <div className="w-full flex flex-col md:flex-row justify-center p-2">
+    <section className="w-full flex flex-col md:flex-row justify-center p-2">
       <h2 className="mb-3 font-semibold text-xl md:hidden">Upload csv</h2>
       <div className=" md:w-[596px] h-fit min-h-[400px] bg-white rounded-md flex flex-col justify-center items-center">
         <div className="flex justify-center items-center my-2 w-full md:w-[570px] md:border-2 border-dotted border-gray-400 h-fit min-h-[330px] rounded-md ">
@@ -39,6 +39,6 @@ export default function Upload({ getRootProps, getInputProps, isDragActive }) {
           <input {...getInputProps()} className="opacity-0 w-0 h-0 absolute" />
         </button>
       </div>
-    </div>
+    </section>
   );
 }

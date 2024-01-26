@@ -7,7 +7,7 @@ export default function UploadedFiles({ data }) {
   const tableRows = data.length > 1 && data.slice(1);
 
   return (
-    <div
+    <section
       className={`w-full flex flex-col justify-center overflow-x-auto items-center item p-2 ${
         data.length === 0 ? "hidden" : ""
       }`}
@@ -31,6 +31,6 @@ export default function UploadedFiles({ data }) {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

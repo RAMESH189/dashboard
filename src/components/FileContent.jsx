@@ -18,13 +18,14 @@ export default function FileContent({ rowData }) {
   lastStringInQuotes.pop();
 
   // console.log("lastStringInQuotes", lastStringInQuotes);
+  console.log(lastStringInQuotes);
 
   const handleChnage = (e) => {
     setValue(e.target.value);
   };
 
   const removeItem = (e, item) => {
-    e.preventDefault()
+    e.preventDefault();
     const updatedValues = values.filter((value) => item !== value);
     setValues(updatedValues);
   };
@@ -36,7 +37,7 @@ export default function FileContent({ rowData }) {
   }, [value]);
 
   return (
-    <div className="w-full bg-white p-4 rounded-md flex items-center justify-around mb-2">
+    <section className="w-full bg-white p-4 rounded-md flex items-center justify-around mb-2">
       <p className="flex-[0.2]">{row[0]}</p>
       <p className="flex-[0.2] text-blue-500 text-sm ">
         <a href={row[1]}>{row[1]}</a>
@@ -81,6 +82,6 @@ export default function FileContent({ rowData }) {
             ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 }

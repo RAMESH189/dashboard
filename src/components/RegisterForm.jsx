@@ -43,7 +43,7 @@ export default function RegisterForm() {
   }, [loggedIn]);
 
   return (
-    <div className="w-full md:w-[523px] h-fit md:h-[690px] bg-[#F8FAFF] p-4 md:p-2">
+    <section className="w-full md:w-[523px] h-fit md:h-[690px] bg-[#F8FAFF] p-4 md:p-2">
       <div className="bg-[#F8FAFF] w-full min-h-screen md:h-[410px] flex flex-col gap-10">
         <div className="">
           <h2 className="text-2xl md:text-3xl py-2 font-bold">Register</h2>
@@ -112,6 +112,6 @@ export default function RegisterForm() {
           <IoLogoDiscord size={30} className="cursor-pointer" />
         </div>
       </div>
-    </div>
+    </section>
   );
 }

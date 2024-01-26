@@ -36,7 +36,7 @@ export default function SideNav() {
           <GiHamburgerMenu onClick={() => handleNavClick()} size={25} />
         </div>
       ) : (
-        <div
+        <nav
           className={`h-screen flex-[0.15] z-40 p-6 absolute md:relative min-w-[200px] bg-white shadow-md md:shadow-none rounded-lg md:rounded-none transition duration-500`}
         >
           <div className="flex items-center gap-6 justify-betwen md:justify-center mb-10">
@@ -91,7 +91,7 @@ export default function SideNav() {
               selected={item === "settings"}
             />
           </div>
-        </div>
+        </nav>
       )}
     </>
   );
